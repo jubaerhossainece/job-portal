@@ -1,0 +1,6 @@
+.card-header.page-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    margin-bottom: 0;
+}
