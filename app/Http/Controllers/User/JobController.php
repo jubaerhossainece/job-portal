@@ -18,10 +18,7 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::where('is_active', true)->select('id', 'title', 'job_types_id', 'description')->paginate(5);
-         $applied_ids = (array)DB::table('job_user')->select('job_id')->where('user_id', Auth::user()->id)->get();
         
-         array_values($applied_ids);
-        return in_array(5, $applied_ids);
         return view('user.jobs.index', compact('jobs'));
     }
 

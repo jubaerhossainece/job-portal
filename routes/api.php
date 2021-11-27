@@ -15,10 +15,6 @@ use App\Http\Controllers\Api\AuthController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::apiResource('/jobs', JobController::class);
     Route::post('/logout', [AuthController::class, 'logout']);
