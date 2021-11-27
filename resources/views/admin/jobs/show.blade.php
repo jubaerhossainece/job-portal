@@ -49,6 +49,9 @@
 					@endif
 
 				</div>
+				      	<a href="{{route('admin.jobs.edit', $job->id)}}" class="btn btn-primary" data-tooltip="tooltip" data-placement="bottom" title="Edit information">Edit Job
+						</a>
+				      <td><a href="{{route('admin.job.applicant.list', $job->id)}}" class="btn btn-info">Applicant list</a></td>
 
 			</div>
 		</div>
