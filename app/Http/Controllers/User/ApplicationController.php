@@ -12,6 +12,9 @@ class ApplicationController extends Controller
     public function apply(Request $request){
         $user = User::findOrFail(Auth::user()->id);
         $user->jobs()->attach($request->job_id);
-        return $user;
+        
+        return response()->json([
+            'message' => 'success'
+        ]);
     }
 }

@@ -65,10 +65,11 @@
 			data: { 'job_id' : job_id },
 			cache:false,
 			success: function(data){
-				console.log(data);
-				if(data){
+				console.log(data.success);
+				if(data.message == 'success'){
 					$('#job-id-'+job_id).html('Applied');
-					$('#job-id-'+job_id).removeClass("btn-success").addClass("btn-light"); 
+					$('#job-id-'+job_id).removeClass("btn-success").addClass("btn-secondary");
+					 document.getElementById("job-id-"+job_id).disabled = true;  
 				}else{
 					$('#job-id-'+job_id).html('Apply');
 					$('#job-id-'+job_id).removeClass("btn-light").addClass("btn-success");
