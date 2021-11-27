@@ -53,7 +53,7 @@
 							</button>
                         @endif
 				      </td>
-				      <td><a href="{{route('admin.job.applicant.list', $job->id)}}" class="btn btn-primary">Applicant list</a></td>
+				      <td><a href="{{route('admin.job.applicant.list', $job->id)}}" class="btn btn-info">Applicant list</a></td>
 				      <td>
 				      	<a href="{{route('admin.jobs.edit', $job->id)}}" class="btn btn-primary btn-sm" data-tooltip="tooltip" data-placement="bottom" title="Edit information">
 							<i class="fas fa-edit"></i>
