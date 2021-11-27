@@ -30,13 +30,41 @@ class AuthController extends Controller
             'department' => $user['department'],
             'current_company' => $user['current_company'],
             'position' => $user['position'],
-            'password' => $user['password'],
+            'password' => Hash::make($user['password']),
         ]);
 
         $token = $user->createToken('riseupToken')->plainTextToken;
         $response = [
             'user' => $user,
             'token' => $token
+        ];
+
+        return response($response, 200);
+    }
+
+    public function logout(Request $request){
+        auth()->user()->tokens()->delete();
+        return response([
+            'message' => 'You are logged out now!'
+        ]);
+    }
+
+
+    public function login(Request $request){
+        $data = $request->validate([
+            'phone_number' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:4'],
+        ]);
+        $user = User::where('phone_number', $data['phone_number'])->first();
+
+        if(!$user || !Hash::check($data['password'], $user->password)){
+           return response(['message' => 'Credentials did not match!'], 401);
+        }
+
+         $token = $user->createToken('riseupToken')->plainTextToken;
+        $response = [
+                'user' => $user,
+                'token' => $token
         ];
 
         return response($response, 200);
