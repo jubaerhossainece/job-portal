@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\JobTypeController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\JobManipulationController;
+use App\Http\Controllers\Admin\ApplicantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,6 @@ Route::resource('/job-types', JobTypeController::class);
 Route::resource('/jobs', JobController::class);
 //routes to change job status
 Route::get('/job/status-change/{id}', [JobManipulationController::class, 'changeStatus'])->name('job.status-change');
+
+Route::get('/job/{id}/applicants', [ApplicantController::class, 'applicantList'])->name('job.applicant.list');
+Route::get('/job/{job_id}/applicant/{user_id}', [ApplicantController::class, 'singleApplicant'])->name('job.applicant.single');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,7 +17,6 @@ class DashboardController extends Controller
     public function __invoke(Request $request)
     {
         $jobs = DB::table('jobs')->where('is_active', true)->count();
-        $job_types = DB::table('job_types')->count();
-        return view('admin.dashboard', compact('jobs', 'job_types'));
+        return view('user.Dashboard', compact('jobs'));
     }
 }

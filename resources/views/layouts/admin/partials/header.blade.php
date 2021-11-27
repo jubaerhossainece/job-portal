@@ -19,10 +19,17 @@
                 <i class="ti-settings text-primary"></i>
                 Settings
               </a>
-              <a class="dropdown-item">
+              <a class="dropdown-item" onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
                 <i class="ti-power-off text-primary"></i>
+
                 Logout
+
+                <form id="logout-form" action="{{ route('admin.admin-logout') }}" method="GET" class="d-none">
+                  @csrf
+                </form>
               </a>
+
             </div>
           </li>
           

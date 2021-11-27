@@ -17,8 +17,10 @@ class JobController extends Controller
      */
     public function index()
     {
+        // $jobs = Job::select('id','title', 'is_active', 'job_types_id')
+        //             ->get();
         $jobs = Job::select('id','title', 'is_active', 'job_types_id')
-                    ->get();
+                ->paginate(10);
         return view('admin.jobs.index', compact('jobs'));
     }
 
